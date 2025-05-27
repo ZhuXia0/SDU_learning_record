@@ -1,0 +1,276 @@
+一、简答（30分）
+1.试用面向对象语言简述改写和重定义的异同，以及方法绑定时的差别
+
+改写是子类的方法和父类的方法具有相同的方法名和类型签名
+重定义是子类的方法和父类的方法方法名相同但类型签名不同。
+
+在方法绑定时，改写是动态绑定，重定义是静态绑定。
+
+2.试用面向对象语言简述this的多态性  
+
+在类A的方法中，this指代类A，在类B的方法中，this指代类B
+
+3.试用面向对象语言简述替换原则  
+
+如果类B是类A的子类，那么无论任何时候用类B来代替类A，外界都毫无察觉，那么就称类B符合替换原则
+
+4.为什么要尽量使用组合复用而不要用继承复用   
+
+类的内部细节对外不可见，封装性好，同时类之间的相互依赖性比较小，低耦合，因此优先使用组合可以让系统的重用性和简单性更好，而随后使用继承，可以扩展可用的组合类集
+
+5.重载方法绑定书P91页例子，简述重载方法绑定的步骤   
+
+重载有两种，一是基于类型签名的重载，另一种是基于范畴的重载。基于类型签名的重载是指一个类有多个方法名相同但是类型签名不同的函数。
+
+二、重构（30分）
+1.totalPrice方法，A产品八折，B产品满100减20，C产品11号七折，12号满200返现5元，试简述满足开闭原则的解决方案（画类图，写代码框架）   
+
+策略模式
+interface IDiscount
+{
+	public float CalMoney(float totalMoney);
+}
+class DiscountA implements IDiscount
+{
+	public float CalMoney(flaot totalMoney)
+	{
+		return totalMoney*0.8;
+	}
+}
+class Count
+{
+	private IDiscount discuont;
+	public Count(IDiscount discount)
+	{
+		this.discount = discount;
+	}
+	public float totalMoney()
+	{
+		return discount.CalMoney();
+	}
+
+}
+
+
+
+2.矩形类里面有resize方法，setWidth,setHeight方法，现在有一个Square类，继承自矩形类并实现这三个方法。问，这样的设计合理吗？不合理的话怎么改（解题思路。设计矩形和正方形的共同父类） 
+
+
+
+
+3.苹果有writeTo方法，橘子有write方法来实现输出，现在要让苹果和橘子在同一个列表中，且可以使用print方法打印输出，试写出代码框架，要求：使用适配器模式，纯多态，反射和内省，来实现。
+abstract class Fruit
+{
+	public static void print(Fruit fruit)
+	{
+		fruit.print();
+	}
+	public abstract void print();
+}
+class Apple extends Fruit
+{
+	public void print()
+	{
+		writeTo();
+	}
+	public void writeTo(){}
+}
+class Orange extends Fruit
+{
+	public static void print(Apple apple)
+	{
+		apple.writeTo();
+	}
+	public static void print(Orange orange)
+	{
+		orange.write();
+	}
+	public void write(){}
+}
+
+
+public void print(Fruit fruit)
+{
+	fruit.print();
+}
+=======
+//对象的适配器
+interface BaseAdapter
+{
+	public void print();
+}
+class AppleAdapter implements BaseAdapter
+{
+	private Apple fruit;
+	public AppleAdapter(Apple apple)
+	{
+		this.apple = apple;
+	}
+	public void print(Fruit fruit)
+	{
+		this.fruit.writeTo();
+	}
+}
+
+
+//类的适配器
+interface Target
+{
+	public void print();
+}
+
+class AppleAdapter extends Apple implements Target
+{
+	public void print()
+	{
+		this.writeTo();
+	}
+}
+
+
+//
+List<Object> os = new ArrayList<Object>();
+int len = os.size();
+for(int i = 0;i<len;i++ )
+{
+	Object o = os.get(i);
+	if(o instanceof Apple)
+	{
+		((Apple)o).writeTo();
+	}else if(o instanceof Orange)
+	{
+		((Orange)o).write();
+	}
+}
+
+
+
+三代码题（40分） 
+1. 公司批准预算支出，五万元以下可由主任审批，五万元以上（包括五万元）十万元以上由副董事长审批，十万元（包括十万）以上五十万元由董事长审批，超过五十万元由会议决定，试用责任链模式解决这种问题，画出类图，给出代码框架  
+
+abstract class Lingdao
+{
+	Lingdao lingdao;
+	public Lingdao()
+	{
+
+	}
+	public void setNextLingdao(Lingdao lingdao)
+	{
+		this.lingdao = lingdao;
+	}
+	public abstract void method(int money);
+}
+class Zhuren extends Lingdao
+{
+	private int min = 0;
+	private int max = 5;
+	public Zhuren(){}
+	public void method(int money)
+	{
+		if(min<money && money<max)
+		{
+			System.out.println("");
+		}else
+		{
+			lingdao.method();
+		}
+	}
+}
+
+
+
+
+2.有七喜、可乐、雪碧、美年达等饮料，分别可以使玻璃瓶装，易拉罐、100ML塑料瓶、200ML塑料瓶等规格，可以通过冷饮店，超市、冰淇淋店等销售渠道销售，问用什么样的设计模式能减少子类的数量，画出设计模式的类图，并给出代码框架，子类实现一个就行。 
+
+
+
+3.是食堂为了满足不同学生的需求，提供了很多调料供学生自由添加，应使用什么设计模式来实现这种情况，画出清炒白菜加盐、加辣椒、加胡椒的对象图。
+
+装饰器模式
+
+class
+
+七、食堂有红豆豆浆、黄豆豆浆、黑豆豆浆等五种豆浆（具体哪五种忘了），有小杯、中杯、大杯、超大杯四种杯子规格，顾客可以根据需要自己添加盐或者糖两种调料，为了尽可能减少类的种类，采用哪两种设计模式并画出类图。
+
+interface Eatable
+{
+	public void method();
+}
+class Salt implements Tiaoliao
+{
+	private Eatable cai;
+	public Salt(Eatable cai)
+	{
+		this.cai = cai;
+	}
+	public void method()
+	{
+		cai.method();
+		System.out.println("加辣椒");
+	}
+}
+
+class QingchaoBaicai implements Eatable
+{
+	public void method()
+	{
+		Sytem.out.println("清炒白菜")
+	}
+}
+
+
+interface Weidao
+{
+	public void add();
+}
+
+
+
+interface Weidao
+{
+	public void add();
+}
+class Salt implements Weidao
+{
+	public void add()
+	{
+		System.out.println("add salt");
+	}
+}
+interface Type
+{
+	public void add();
+}
+class Doujiang1 implements Type
+{
+	public void add()
+	{
+		System.out.println("加豆浆");
+	}
+}
+
+abstract Glass 
+{
+	Type type;
+	Weidao weidao;
+	public Glass()
+	{
+
+	}
+	public void setType()
+	{
+
+	}
+	public void setWeidao()
+	{
+
+	}
+	public void method()
+	{
+		if(type != null)
+			type.add();
+		if(weidao != null)
+			weidao.add();
+	}
+}
