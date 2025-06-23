@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.6 on win32)" generated="2025-05-22T20:27:50.496823" rpa="false" schemaversion="5">
+<suite id="s1" name="Api Suite" source="F:\Pyproject\pythonStudy\softwaretest\api_suite">
+<suite id="s1-s1" name="Testcases" source="F:\Pyproject\pythonStudy\softwaretest\api_suite\testcases">
+<suite id="s1-s1-s1" name="Login" source="F:\Pyproject\pythonStudy\softwaretest\api_suite\testcases\login.robot">
+<test id="s1-s1-s1-t1" name="TC01_用户登录成功" line="5">
+<kw name="初始化测试会话" owner="common" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:50.840578" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:50.840578" level="INFO">Creating Session using : alias=api_session, url=http://211.87.232.162:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-22T20:27:50.840578" level="INFO">${API_HEADERS} = {'Content-Type': 'application/json'}</msg>
+<arg>${API_HEADERS}</arg>
+<arg>${headers}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:50.840578" level="INFO">${test_data} = {'username': '202200201095', 'password': 'yangweikang51021'}</msg>
+<var>${test_data}</var>
+<arg>username=202200201095</arg>
+<arg>password=yangweikang51021</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:51.000252" level="INFO">POST Request : url=http://211.87.232.162:8080/app/appLogin 
+ path_url=/app/appLogin 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '60'} 
+ body=b'{"username": "202200201095", "password": "yangweikang51021"}' 
+ </msg>
+<msg time="2025-05-22T20:27:51.000252" level="INFO">POST Response : url=http://211.87.232.162:8080/app/appLogin 
+ status=200, reason= 
+ headers={'Set-Cookie': 'JSESSIONID=FC277EDB66FCAAF5BDF50524455C3B0A; Path=/; HttpOnly', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Date': 'Thu, 22 May 2025 12:27:50 GMT', 'Keep-Alive': 'timeout=60', 'Connection': 'keep-alive'} 
+ body={"success":true,"code":20000,"message":"成功","data":{"uid":"df582af0dadc483db3f01423d3da7d6b","uname":"202200201095"}} 
+ </msg>
+<msg time="2025-05-22T20:27:51.000252" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api_session</arg>
+<arg>/app/appLogin</arg>
+<arg>json=${test_data}</arg>
+<arg>headers=${API_HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.159674"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()["success"]}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.000252" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-22T20:27:50.840578" elapsed="0.159674"/>
+</test>
+<test id="s1-s1-s1-t2" name="TC02_用户登录失败" line="13">
+<kw name="初始化测试会话" owner="common" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.017184" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.017184" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:51.017184" level="INFO">Creating Session using : alias=api_session, url=http://211.87.232.162:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-22T20:27:51.017184" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.018192" level="INFO">${API_HEADERS} = {'Content-Type': 'application/json'}</msg>
+<arg>${API_HEADERS}</arg>
+<arg>${headers}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.017184" elapsed="0.001008"/>
+</kw>
+<status status="PASS" start="2025-05-22T20:27:51.015351" elapsed="0.002841"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.018192" level="INFO">${invalid_data} = {'username': 'wrong', 'password': '000000'}</msg>
+<var>${invalid_data}</var>
+<arg>username=wrong</arg>
+<arg>password=000000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.018192" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:51.031736" level="INFO">POST Request : url=http://211.87.232.162:8080/app/appLogin 
+ path_url=/app/appLogin 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '43'} 
+ body=b'{"username": "wrong", "password": "000000"}' 
+ </msg>
+<msg time="2025-05-22T20:27:51.031736" level="INFO">POST Response : url=http://211.87.232.162:8080/app/appLogin 
+ status=200, reason= 
+ headers={'Set-Cookie': 'JSESSIONID=D6543BF83B36D922F84B2B752A63385B; Path=/; HttpOnly', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Date': 'Thu, 22 May 2025 12:27:50 GMT', 'Keep-Alive': 'timeout=60', 'Connection': 'keep-alive'} 
+ body={"success":false,"code":20002,"message":"用户名不存在","data":{}} 
+ </msg>
+<msg time="2025-05-22T20:27:51.031736" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api_session</arg>
+<arg>/app/appLogin</arg>
+<arg>json=${invalid_data}</arg>
+<arg>headers=${API_HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.018192" elapsed="0.013544"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>用户名不存在</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.031736" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-22T20:27:51.015351" elapsed="0.016385"/>
+</test>
+<status status="PASS" start="2025-05-22T20:27:50.523685" elapsed="0.508051"/>
+</suite>
+<suite id="s1-s1-s2" name="Question" source="F:\Pyproject\pythonStudy\softwaretest\api_suite\testcases\question.robot">
+<test id="s1-s1-s2-t1" name="TC03_获取问题列表" line="5">
+<kw name="初始化测试会话" owner="common">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.046813" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.046813" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:51.046813" level="INFO">Creating Session using : alias=api_session, url=http://211.87.232.162:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-22T20:27:51.046813" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.046813" level="INFO">${API_HEADERS} = {'Content-Type': 'application/json'}</msg>
+<arg>${API_HEADERS}</arg>
+<arg>${headers}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.046813" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-22T20:27:51.046813" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.046813" level="INFO">${login_data} = {'username': '202200201095', 'password': 'yangweikang51021'}</msg>
+<var>${login_data}</var>
+<arg>username=202200201095</arg>
+<arg>password=yangweikang51021</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.046813" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:51.190585" level="INFO">POST Request : url=http://211.87.232.162:8080/app/appLogin 
+ path_url=/app/appLogin 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '60'} 
+ body=b'{"username": "202200201095", "password": "yangweikang51021"}' 
+ </msg>
+<msg time="2025-05-22T20:27:51.190585" level="INFO">POST Response : url=http://211.87.232.162:8080/app/appLogin 
+ status=200, reason= 
+ headers={'Set-Cookie': 'JSESSIONID=01BF326254768ECD7400CD15E3535799; Path=/; HttpOnly', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Date': 'Thu, 22 May 2025 12:27:50 GMT', 'Keep-Alive': 'timeout=60', 'Connection': 'keep-alive'} 
+ body={"success":true,"code":20000,"message":"成功","data":{"uid":"df582af0dadc483db3f01423d3da7d6b","uname":"202200201095"}} 
+ </msg>
+<msg time="2025-05-22T20:27:51.190585" level="INFO">${login_resp} = &lt;Response [200]&gt;</msg>
+<var>${login_resp}</var>
+<arg>api_session</arg>
+<arg>/app/appLogin</arg>
+<arg>json=${login_data}</arg>
+<arg>headers=${API_HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.046813" elapsed="0.143772"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-05-22T20:27:51.190585" level="INFO">${cookie} = 01BF326254768ECD7400CD15E3535799</msg>
+<var>${cookie}</var>
+<arg>${login_resp.cookies}</arg>
+<arg>JSESSIONID</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.190585" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.190585" level="INFO">${auth_header} = {'Cookie': 'JSESSIONID=01BF326254768ECD7400CD15E3535799'}</msg>
+<var>${auth_header}</var>
+<arg>Cookie=JSESSIONID=${cookie}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.190585" elapsed="0.000000"/>
+</kw>
+<kw name="Copy Dictionary" owner="Collections">
+<msg time="2025-05-22T20:27:51.190585" level="INFO">${final_headers} = {'Content-Type': 'application/json'}</msg>
+<var>${final_headers}</var>
+<arg>${API_HEADERS}</arg>
+<doc>Returns a copy of the given dictionary.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.190585" elapsed="0.000000"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${final_headers}</arg>
+<arg>&amp;{auth_header}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.190585" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.190585" level="INFO">${params} = {'page': '1', 'limit': '10'}</msg>
+<var>${params}</var>
+<arg>page=1</arg>
+<arg>limit=10</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.190585" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-22T20:27:51.222132" level="INFO">POST Request : url=http://211.87.232.162:8080/app/quesList 
+ path_url=/app/quesList 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Cookie': 'JSESSIONID=01BF326254768ECD7400CD15E3535799', 'Content-Length': '28'} 
+ body=b'{"page": "1", "limit": "10"}' 
+ </msg>
+<msg time="2025-05-22T20:27:51.222132" level="INFO">POST Response : url=http://211.87.232.162:8080/app/quesList 
+ status=200, reason= 
+ headers={'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Date': 'Thu, 22 May 2025 12:27:50 GMT', 'Keep-Alive': 'timeout=60', 'Connection': 'keep-alive'} 
+ body={"success":true,"code":20000,"message":"成功","data":{"pageParam":{"records":[{"id":2608,"qid":"9927b840456f40e1be63511ccf89c82e","title":"测试帖子 3847","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_3035","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:56:52.000+00:00","gmtUpdate":"2025-05-22T11:56:52.000+00:00"},{"id":2607,"qid":"374e7ae6ddfc45348dd205015d4acd49","title":"测试帖子 1610","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_7975","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:52:59.000+00:00","gmtUpdate":"2025-05-22T11:52:59.000+00:00"},{"id":2606,"qid":"57dd43770ed744b8864fa4434b059729","title":"测试帖子 3642","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_6570","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:52:30.000+00:00","gmtUpdate":"2025-05-22T11:52:30.000+00:00"},{"id":2605,"qid":"4fb462b969904e8e81665dcb3bbe12e1","title":"测试帖子 2939","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_6299","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:52:00.000+00:00","gmtUpdate":"2025-05-22T11:52:00.000+00:00"},{"id":2604,"qid":"e842922257874813a933466be8f0c24d","title":"测试帖子 9601","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_8090","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:51:17.000+00:00","gmtUpdate":"2025-05-22T11:51:17.000+00:00"},{"id":2603,"qid":"ff9b94a61b9f4f93a0c3994ea3b9fe01","title":"测试帖子 5244","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_4582","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:50:46.000+00:00","gmtUpdate":"2025-05-22T11:50:46.000+00:00"},{"id":2602,"qid":"e6e4f13329c242e0806184cd6e817a03","title":"测试帖子 8074","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_7433","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:49:16.000+00:00","gmtUpdate":"2025-05-22T11:49:16.000+00:00"},{"id":2601,"qid":"354907cde9344517b18a35e3b1f94992","title":"测试帖子 8835","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_7217","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:48:31.000+00:00","gmtUpdate":"2025-05-22T11:48:31.000+00:00"},{"id":2600,"qid":"6293a0b57868421b85f864d2df325768","title":"测试帖子 1193","content":"这是一个测试帖子的内容","status":0,"sort":0,"views":0,"authorId":"","authorName":"test_user_4088","authorAvatar":"","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T11:47:18.000+00:00","gmtUpdate":"2025-05-22T11:47:18.000+00:00"},{"id":2599,"qid":"eebc6bac743646bab0b2443d45c835ab","title":"wenti","content":" wenti","status":1,"sort":0,"views":3,"authorId":"61ababcb88a8417ab6fb5b8d4790aba5","authorName":"wqwer","authorAvatar":"/images/avatar/avatar-1.jpg","categoryId":1,"categoryName":"学习","gmtCreate":"2025-05-22T09:23:49.000+00:00","gmtUpdate":"2025-05-22T09:23:49.000+00:00"}],"total":2086,"size":10,"current":1,"pages":209}}} 
+ </msg>
+<msg time="2025-05-22T20:27:51.222904" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api_session</arg>
+<arg>/app/quesList</arg>
+<arg>json=${params}</arg>
+<arg>headers=${final_headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.190585" elapsed="0.032319"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()["success"]}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.222904" elapsed="0.000000"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2025-05-22T20:27:51.222904" level="INFO">Length is 10.</msg>
+<arg>${response.json()["data"]["pageParam"]["records"]}</arg>
+<arg>10</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2025-05-22T20:27:51.222904" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-22T20:27:51.031736" elapsed="0.191168"/>
+</test>
+<status status="PASS" start="2025-05-22T20:27:51.031736" elapsed="0.191168"/>
+</suite>
+<status status="PASS" start="2025-05-22T20:27:50.523685" elapsed="0.699219"/>
+</suite>
+<status status="PASS" start="2025-05-22T20:27:50.496823" elapsed="0.726081"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Api Suite" id="s1" pass="3" fail="0" skip="0">Api Suite</stat>
+<stat name="Testcases" id="s1-s1" pass="3" fail="0" skip="0">Api Suite.Testcases</stat>
+<stat name="Login" id="s1-s1-s1" pass="2" fail="0" skip="0">Api Suite.Testcases.Login</stat>
+<stat name="Question" id="s1-s1-s2" pass="1" fail="0" skip="0">Api Suite.Testcases.Question</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

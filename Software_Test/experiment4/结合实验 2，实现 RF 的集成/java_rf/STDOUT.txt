@@ -1,0 +1,11 @@
+✖ TC013执行异常：Expected condition failed: waiting for element to be clickable: By.xpath: //a[contains(text(),'个人中心')] (tried for 3 second(s) with 500 milliseconds interval)
+✖ TC015执行异常：Expected condition failed: waiting for element to be clickable: By.xpath: //a[contains(text(),'个人中心')] (tried for 3 second(s) with 500 milliseconds interval)
+✔ TC012通过：系统成功防范了XSS攻击
+✔ TC009: 未登录自动跳转登录页
+✔ TC010通过：从 360px 滚动到 0px
+✔ TC007通过：系统已过滤XSS脚本，输入被清理
+✖ TC014执行异常：Expected condition failed: waiting for element to be clickable: By.xpath: //a[contains(text(),'个人中心')] (tried for 3 second(s) with 500 milliseconds interval)
+
+=== 测试结果汇总 ===
+执行总数: 15
+失败数: 11

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.6 on win32)" generated="2025-05-21T22:15:09.491565" rpa="false" schemaversion="5">
+<suite id="s1" name="Basic Examples" source="F:\Pyproject\pythonStudy\softwaretest\basic_examples.robot">
+<test id="s1-t1" name="Example BuiltIn Operations" line="7">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-21T22:15:09.529252" level="INFO">${message} = Hello, Robot Framework!</msg>
+<var>${message}</var>
+<arg>Hello, Robot Framework!</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-21T22:15:09.529252" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-21T22:15:09.529252" level="INFO">Hello, Robot Framework! # 输出到日志</msg>
+<arg>${message} # 输出到日志</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-21T22:15:09.529252" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-05-21T22:15:09.530252" level="INFO">${current_date} = 2025-05-21 22:15:09.530</msg>
+<var>${current_date}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-05-21T22:15:09.530252" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-21T22:15:09.530252" level="INFO">Current date: 2025-05-21 22:15:09.530</msg>
+<arg>Current date: ${current_date}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-21T22:15:09.530252" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-21T22:15:09.528252" elapsed="0.002000"/>
+</test>
+<test id="s1-t2" name="Example OS Operations" line="13">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2025-05-21T22:15:09.531263" level="INFO" html="true">Directory '&lt;a href="file://F:\Pyproject\pythonStudy\softwaretest\temp_dir"&gt;F:\Pyproject\pythonStudy\softwaretest\temp_dir&lt;/a&gt;' already exists.</msg>
+<arg>F:\\Pyproject\\pythonStudy\\softwaretest\\temp_dir</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2025-05-21T22:15:09.530252" elapsed="0.001011"/>
+</kw>
+<kw name="Directory Should Exist" owner="OperatingSystem">
+<msg time="2025-05-21T22:15:09.531263" level="INFO" html="true">Directory '&lt;a href="file://F:\Pyproject\pythonStudy\softwaretest\temp_dir"&gt;F:\Pyproject\pythonStudy\softwaretest\temp_dir&lt;/a&gt;' exists.</msg>
+<arg>F:\\Pyproject\\pythonStudy\\softwaretest\\temp_dir</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<status status="PASS" start="2025-05-21T22:15:09.531263" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-21T22:15:09.530252" elapsed="0.001011"/>
+</test>
+<status status="PASS" start="2025-05-21T22:15:09.493568" elapsed="0.038685"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Basic Examples" id="s1" pass="2" fail="0" skip="0">Basic Examples</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

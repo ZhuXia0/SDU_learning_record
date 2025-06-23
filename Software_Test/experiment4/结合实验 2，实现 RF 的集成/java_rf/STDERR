@@ -1,0 +1,7 @@
+Starting ChromeDriver 135.0.7049.97 (b41307079c9b35daccd61645369ffd2e9b93438d-refs/branch-heads/7049@{#1838}) on port 8847
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully on port 8847.
+[1747907454.020][WARNING]: This version of ChromeDriver has not been tested with Chrome version 136.
+5月 22, 2025 5:50:54 下午 org.openqa.selenium.remote.ProtocolHandshake createSession
+信息: Detected dialect: W3C
