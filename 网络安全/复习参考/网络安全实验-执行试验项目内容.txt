@@ -1,0 +1,33 @@
+
+标准组合A类选3个，B类选1个。
+// 现场统计
+a类是复习内容
+
+【A1】Fake WiFI 设计
+    画图示，讲原理，写命令，做测试，写报告
+
+【A2】使用DH的加密，可以基于和/或
+    （1）校园WiFi上的多播（可以降级为普通UDP）
+    （2）手机SMS
+
+【A3】基于iptables的NAS试验
+    “网络安全实验3-a-mini-NAS-in-Linux-v3c-RO.doc”
+    
+【A4】VPN试验
+    测试某一款VPN（linux或windows的，openvpn或iptunnel等等）
+
+【A5】基于Squid和icap的企业安全部署
+    实现的功能包括
+    （1）互联网访问控制
+    （2）解析密文（sslbump）
+    （3）检测病毒等（clamav）
+    （4）防信息泄露（icap）
+    
+【B1】用wireshark观察加密流量
+    HTTPS、QQ和某一款科学上网工具（TOR或I2P）
+
+【B2】远程访问的安全方法
+    至少应当试用和评价3种远程访问技术的方法和安全性
+    （1）SSH的灵活用法
+    （2）VNC
+    （3）XDMCP
